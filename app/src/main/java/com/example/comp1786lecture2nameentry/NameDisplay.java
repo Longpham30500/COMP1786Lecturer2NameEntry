@@ -17,11 +17,13 @@ public class NameDisplay extends AppCompatActivity {
 
         Bundle extras = getIntent().getExtras();
 
-        if (extras != null){
-            String name = extras.getString(NAME);
-            if (name != null){
-                mGreeting.setText((getString(R.string.greeting) + " " + name));
-            }
+        if (extras == null) return;
+        String name = extras.getString(NAME);
+        if (name.isEmpty()) {
+            mGreeting.setText("The name is empty");
+            return;
         }
+        mGreeting.setText((getString(R.string.greeting) + " " + name));
+
     }
 }
